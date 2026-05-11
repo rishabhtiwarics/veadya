@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/aileron');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Aileron", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cinzel", ui-serif, Georgia, serif;
+  
+  --color-brand-green: #5a6b4c;
+  --color-brand-sage: #5a6b4c;
+  --color-brand-cream: #faf9f6;
+  --color-brand-earth: #f4f1ea;
+  --color-brand-text: #2d2d2d;
+  --color-brand-gold: #c5a059;
+}
+
+body {
+  @apply font-sans text-brand-text bg-brand-cream antialiased;
+}
+
+.glass-nav {
+  @apply bg-brand-cream/80 backdrop-blur-md border-b border-black/5;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-brand-cream;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-green/20 rounded-none;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-green/40;
+}
