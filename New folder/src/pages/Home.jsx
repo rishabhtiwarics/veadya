@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Leaf, Sparkles, Sprout, ShieldCheck, ChevronLeft, ChevronRight, Send, Mail, Clock, Truck, Headphones, CreditCard, Rabbit, Gift, Droplet } from 'lucide-react';
+import { ArrowRight, Leaf, Sparkles, Sprout, ShieldCheck, ChevronLeft, ChevronRight, Send, Mail, Clock, Truck, Headphones, CreditCard } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
@@ -68,9 +68,9 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <div className="overflow-x-hidden">
       {/* Hero Slider Section */}
-      <section className="relative h-[550px] sm:h-[650px] lg:h-[850px] flex items-center justify-center overflow-hidden bg-brand-cream">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-brand-cream">
         <AnimatePresence>
           <motion.div
             key={currentSlide}
@@ -89,7 +89,7 @@ export default function Home() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="relative z-20 text-center text-white px-6 max-w-5xl mx-auto flex h-full md:items-center md:justify-center items-end justify-end pt-28 pb-16">
+        <div className="relative z-20 text-center text-white px-6 max-w-5xl mx-auto flex min-h-screen md:items-center md:justify-center items-end justify-end pt-28 pb-16">
           <AnimatePresence mode="popLayout">
             <motion.div
               key={currentSlide}
@@ -134,7 +134,7 @@ export default function Home() {
                       whileTap={{ scale: 0.98 }}
                       className="w-full sm:w-auto
                        bg-white text-brand-text px-8 py-4 text-[10px] font-bold tracking-[0.3em] 
-                       uppercase transition-all shadow-2xl hover:bg-brand-green hover:text-white rounded-full"
+                       uppercase transition-all shadow-2xl hover:bg-brand-green hover:text-white rounded-none"
                     >
                       SHOP WELLNESS
                     </motion.button>
@@ -144,8 +144,8 @@ export default function Home() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
                       className="w-full sm:w-auto border border-white/20
-                      hover:border-white text-white px-8 py-4 text-[10px] font-bold tracking-[0.3em] 
-                      uppercase transition-all backdrop-blur-md rounded-full"
+                     hover:border-white text-white px-8 py-4 text-[10px] font-bold tracking-[0.3em] 
+                     uppercase transition-all backdrop-blur-md rounded-none"
                     >
                       OUR STORY
                     </motion.button>
@@ -162,7 +162,7 @@ export default function Home() {
           <div className="h-40 w-[1px] bg-white/10 relative">
             <motion.div
               animate={{ top: `${(currentSlide / (heroSlides.length - 1)) * 100}%` }}
-              className="absolute left-1/2 -translate-x-1/2 w-4 h-4 border border-white bg-white/20 backdrop-blur-sm rounded-full"
+              className="absolute left-1/2 -translate-x-1/2 w-4 h-4 border border-white bg-white/20 backdrop-blur-sm"
             />
           </div>
           <div className="flex flex-col gap-4 mt-8">
@@ -182,74 +182,42 @@ export default function Home() {
       {/* Category Highlights */}
       <section className="py-24 px-6 bg-white scroll-reveal shadow-[0_30px_90px_-60px_rgba(35,65,35,0.18)]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 space-y-4">
-            <div className="flex items-center justify-center gap-3 mb-2">
-              <div className="w-8 h-[1px] bg-brand-gold/40" />
-              <span className="text-[10px] font-bold tracking-[0.5em] text-brand-gold uppercase">
-                Shop by Category
-              </span>
-              <div className="w-8 h-[1px] bg-brand-gold/40" />
-            </div>
-            <h2 className="text-2xl md:text-3xl font-serif text-brand-green leading-none tracking-wide">
+          <div className="text-center mb-14">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-brand-gold mb-4">Shop by Category</p>
+            <h2 className="text-4xl md:text-5xl font-serif text-brand-green leading-tight tracking-tight">
               Category Highlights
             </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-sm md:text-base text-brand-text/70 leading-7">
+              Discover refined wellness collections presented in elegant, story-driven cards.
+            </p>
           </div>
 
           <div className="flex justify-center w-full">
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-6xl">
               {[
-                { title: 'CAPSULES', items: '12+ Items', image: '/productimges/product5.png', icon: Sparkles, to: '/shop?category=capsules' },
-                { title: 'DROP', items: '08+ Items', image: '/productimges/product5.png', icon: Droplet, to: '/shop?category=drop' },
-                { title: 'JUICE', items: '10+ Items', image: '/productimges/product5.png', icon: Leaf, to: '/shop?category=juice' },
+                { title: 'Bio Herbal', items: '12+ Items', image: '/productimges/product9.png', icon: Leaf, to: '/shop?category=herbal' },
+                { title: 'Body Lotion', items: '15+ Items', image: '/productimges/product5.png', icon: Sparkles, to: '/shop?category=lotion' },
+                { title: 'Candle Jar', items: '14+ Items', image: '/productimges/product6.png', icon: Sprout, to: '/shop?category=candle' },
               ].map((category) => (
-                <Link key={category.title} to={category.to} className="block group">
-                  <div className="relative overflow-hidden border border-brand-gold/20 bg-brand-earth/5 p-3 shadow-sm hover:shadow-xl transition-all duration-700 rounded-t-full rounded-b-[80px]">
-                    <div className="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden mb-8 sm:mb-12 rounded-t-full rounded-b-3xl border border-brand-gold/10">
-                      <div className="relative w-full h-full overflow-hidden bg-brand-earth">
-                        <motion.img 
-                          src={category.image} 
-                          alt={category.title} 
-                          className="h-full w-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000" 
-                        />
-                      </div>
+                <Link key={category.title} to={category.to} className="block">
+                  <div className="relative overflow-hidden border border-brand-cream/90 bg-white shadow-[0_24px_60px_-40px_rgba(35,65,35,0.2)]">
+                    <div className="relative overflow-hidden  bg-white">
+                      <img src={category.image} alt={category.title} className="h-[400px] w-full object-cover" />
                     </div>
 
-                    <div className="relative px-6 pb-4 sm:pb-8 text-center">
-                      <div className="absolute top-[-60px] sm:top-[-80px] left-1/2 -translate-x-1/2">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-full border-4 border-[#fcf9f4] bg-brand-gold text-white shadow-lg transition-transform duration-500 group-hover:scale-110">
+                    <div className="relative px-6 pb-10 pt-20 bg-white text-center">
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <div className="flex h-20 w-20 items-center justify-center rounded-full border border-brand-cream/80 bg-brand-green text-white shadow-[0_20px_40px_-24px_rgba(39,64,40,0.35)]">
                           <category.icon size={24} strokeWidth={1.5} />
                         </div>
                       </div>
                       <div className="space-y-3">
-                        <h3 className="font-serif text-2xl text-brand-green tracking-wide group-hover:tracking-widest transition-all duration-500 uppercase">{category.title}</h3>
-                        <p className="text-[10px] tracking-[0.3em] text-brand-green/50 font-bold uppercase">{category.items}</p>
-
+                        <h3 className="text-2xl font-semibold text-brand-green tracking-tight">{category.title}</h3>
+                        <p className="text-sm font-medium text-brand-text/80">{category.items}</p>
                       </div>
                     </div>
                   </div>
                 </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Brand Values Feature Bar */}
-          <div className="mt-20 bg-brand-earth/10 border border-brand-green/10 p-12 md:p-10 rounded-[80px] md:rounded-full shadow-sm max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-0">
-              {[
-                { icon: Leaf, title: "Natural Ingredients", desc: "Gentle & Safe" },
-                { icon: Rabbit, title: "Cruelty Free", desc: "Love for Animals" },
-                { icon: Gift, title: "Premium Quality", desc: "Best for You" },
-                { icon: Sprout, title: "Sustainable", desc: "Better for Planet" }
-              ].map((item, idx) => (
-                <div key={idx} className={`flex flex-col md:flex-row items-center justify-center lg:justify-start gap-5 md:gap-6 px-4 md:px-10 ${idx !== 3 ? 'lg:border-r border-brand-green/10' : ''}`}>
-                  <div className="text-brand-green bg-white/40 p-4 rounded-full border border-brand-green/5 shadow-inner">
-                    <item.icon size={28} strokeWidth={1.5} />
-                  </div>
-                  <div className="text-center md:text-left space-y-1">
-                    <h4 className="font-serif text-[14px] text-brand-green uppercase tracking-[0.1em] font-bold">{item.title}</h4>
-                    <p className="text-[10px] text-brand-green/50 font-bold uppercase tracking-[0.2em]">{item.desc}</p>
-                  </div>
-                </div>
               ))}
             </div>
           </div>
@@ -294,9 +262,9 @@ export default function Home() {
                     delay: i * 0.8
                   }}
                   whileHover={{ y: -15, scale: 1.02 }}
-                  className="bg-white p-12 text-center flex flex-col items-center group transition-all duration-500 border border-brand-green/5 shadow-xl shadow-brand-green/5 h-full rounded-3xl"
+                  className="bg-white p-12 text-center flex flex-col items-center group transition-all duration-500 border border-brand-green/5 shadow-xl shadow-brand-green/5 h-full rounded-none"
                 >
-                  <div className="w-16 h-16 bg-brand-earth/30 rounded-full flex items-center justify-center mb-8 group-hover:bg-brand-green group-hover:text-white transition-colors duration-500">
+                  <div className="w-16 h-16 bg-brand-earth/30 rounded-none flex items-center justify-center mb-8 group-hover:bg-brand-green group-hover:text-white transition-colors duration-500">
                     <feature.icon className="w-6 h-6 text-brand-green group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
                   </div>
                   <h3 className="font-serif text-2xl mb-4 text-brand-green tracking-wide uppercase">{feature.title}</h3>
@@ -337,7 +305,7 @@ export default function Home() {
               className="inline-flex items-center gap-4 text-[11px] font-bold tracking-[0.4em] uppercase text-brand-green group"
             >
               View All
-              <div className="w-10 h-10 rounded-full border border-brand-green/20 flex items-center justify-center group-hover:bg-brand-green group-hover:border-brand-green transition-all duration-500">
+              <div className="w-10 h-10 rounded-none border border-brand-green/20 flex items-center justify-center group-hover:bg-brand-green group-hover:border-brand-green transition-all duration-500">
                 <ArrowRight size={14} className="group-hover:text-white transition-colors" />
               </div>
             </Link>
@@ -358,61 +326,16 @@ export default function Home() {
               className="flex-1 grid grid-cols-2 gap-3 h-[450px] md:h-[600px] w-full"
             >
               <div className="flex flex-col gap-3 h-full">
-                <div className="h-[45%] overflow-hidden border border-brand-green/5 shadow-lg rounded-2xl relative group/img">
-                  <motion.img 
-                    src="/productimges/product3.png" 
-                    className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000" 
-                    alt="Ayurvedic Treatment" 
-                  />
-                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-all duration-500 z-20">
-                    <Link to="/shop">
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="bg-white text-brand-green px-6 py-3 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase shadow-2xl"
-                      >
-                        Shop Now
-                      </motion.button>
-                    </Link>
-                  </div>
+                <div className="h-[45%] overflow-hidden border border-brand-green/5 shadow-lg">
+                  <img src="/productimges/product3.png" className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000" alt="Ayurvedic Treatment" />
                 </div>
-                <div className="h-[55%] overflow-hidden border border-brand-green/5 shadow-lg rounded-2xl relative group/img">
-                  <motion.img 
-                    src="/productimges/product5.png" 
-                    className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000" 
-                    alt="Botanical Oils" 
-                  />
-                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-all duration-500 z-20">
-                    <Link to="/shop">
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="bg-white text-brand-green px-6 py-3 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase shadow-2xl"
-                      >
-                        Shop Now
-                      </motion.button>
-                    </Link>
-                  </div>
+                <div className="h-[55%] overflow-hidden border border-brand-green/5 shadow-lg">
+                  <img src="/productimges/product5.png" className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000" alt="Botanical Oils" />
                 </div>
               </div>
-              <div className="h-full overflow-hidden border border-brand-green/5 shadow-xl relative group group/img rounded-2xl">
+              <div className="h-full overflow-hidden border border-brand-green/5 shadow-xl relative group">
                 <div className="absolute inset-0 bg-brand-green/10 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-                <motion.img 
-                  src="/productimges/product7.png" 
-                  className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000" 
-                  alt="Wellness Ritual" 
-                />
-                <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-all duration-500 z-20">
-                  <Link to="/shop">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="bg-white text-brand-green px-6 py-3 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase shadow-2xl"
-                    >
-                      Shop Now
-                    </motion.button>
-                  </Link>
-                </div>
+                <img src="/productimges/product7.png" className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000" alt="Wellness Ritual" />
               </div>
             </motion.div>
 
@@ -443,7 +366,7 @@ export default function Home() {
                   { title: "Aloe Vera Purity", desc: "100% organic, cold-pressed juice derived from the finest hand-selected inner leaf fillets." },
                   { title: "Ayurvedic Potency", desc: "Standardized herbal capsules formulated with traditional wisdom and modern extraction precision." }
                 ].map((item, i) => (
-                  <div key={i} className="group p-6 border-l-2 border-brand-gold bg-brand-earth/5 hover:bg-brand-earth/15 transition-all space-y-3 rounded-2xl">
+                  <div key={i} className="group p-6 border-l-2 border-brand-gold bg-brand-earth/5 hover:bg-brand-earth/15 transition-all space-y-3">
                     <h4 className="font-serif text-lg text-brand-green flex items-center gap-3 tracking-wide">
                       <div className="w-2 h-2 bg-brand-gold" />
                       {item.title}
@@ -456,7 +379,7 @@ export default function Home() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="self-start inline-flex items-center gap-6 bg-brand-green text-brand-gold px-12 py-5 text-xs font-black tracking-[0.3em] uppercase shadow-2xl hover:bg-brand-gold hover:text-brand-green transition-all rounded-full"
+                className="self-start inline-flex items-center gap-6 bg-brand-green text-brand-gold px-12 py-5 text-xs font-black tracking-[0.3em] uppercase shadow-2xl hover:bg-brand-gold hover:text-brand-green transition-all rounded-none"
               >
                 Learn Our Process
                 <ArrowRight size={16} />
@@ -501,9 +424,9 @@ export default function Home() {
                   whileHover={{ y: -18, scale: 1.02 }}
                   className="group cursor-pointer flex flex-col items-center w-full"
                 >
-                  <div className="w-full aspect-square bg-white shadow-[0_4px_20px_rgba(90,107,76,0.08)] p-2 rounded-2xl border border-brand-gold/20 transition-all duration-500 group-hover:border-brand-green/30 group-hover:shadow-[0_20px_50px_rgba(90,107,76,0.14)] overflow-hidden">
-                    <div className="w-full h-full overflow-hidden rounded-xl bg-brand-earth/30">
-                      <img src={ing.icon} className="w-full h-full object-cover transition-transform duration-1000" alt={ing.name} />
+                  <div className="w-full aspect-square bg-white shadow-[0_4px_20px_rgba(90,107,76,0.08)] p-2 rounded-none border border-brand-gold/20 transition-all duration-500 group-hover:border-brand-green/30 group-hover:shadow-[0_20px_50px_rgba(90,107,76,0.14)] overflow-hidden">
+                    <div className="w-full h-full overflow-hidden rounded-none bg-brand-earth/30">
+                      <img src={ing.icon} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt={ing.name} />
                     </div>
                   </div>
                   <h4 className="mt-6 text-[11px] font-bold tracking-[0.2em] text-brand-green/80 uppercase transition-all duration-500 group-hover:text-brand-green group-hover:tracking-[0.3em]">
@@ -644,13 +567,13 @@ export default function Home() {
 
             <div className="max-w-2xl mx-auto pt-4">
               <div className="relative group">
-                <div className="absolute -inset-1 bg-brand-green/20 rounded-2xl blur opacity-0 group-focus-within:opacity-100 transition duration-500"></div>
-                <div className="relative flex flex-col sm:flex-row items-center gap-3 bg-white/60 backdrop-blur-2xl border border-brand-green/20 p-2 rounded-2xl shadow-2xl">
+                <div className="absolute -inset-1 bg-brand-green/20 rounded-none blur opacity-0 group-focus-within:opacity-100 transition duration-500"></div>
+                <div className="relative flex flex-col sm:flex-row items-center gap-3 bg-white/60 backdrop-blur-2xl border border-brand-green/20 p-2 rounded-none shadow-2xl">
                   <div className="flex-grow flex items-center px-6 gap-3">
                     <Mail size={18} className="text-brand-green/60" />
                     <input type="email" placeholder="Enter your email address" className="w-full bg-transparent py-4 text-brand-green placeholder:text-brand-green/60 text-sm font-bold focus:outline-none" />
                   </div>
-                  <button className="w-full sm:w-auto bg-brand-green text-brand-gold px-8 py-4 rounded-xl text-xs font-black tracking-[0.2em] uppercase hover:bg-brand-green/90 transition-all shadow-lg">
+                  <button className="w-full sm:w-auto bg-brand-green text-brand-gold px-8 py-4 rounded-none text-xs font-black tracking-[0.2em] uppercase hover:bg-brand-green/90 transition-all shadow-lg">
                     Subscribe
                   </button>
                 </div>
@@ -662,7 +585,7 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
@@ -686,13 +609,13 @@ function OpeningHoursSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative order-2 lg:order-1">
             <div className="grid grid-cols-3 gap-3 md:gap-6">
-              <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="aspect-[2/5] overflow-hidden rounded-t-full rounded-b-2xl shadow-2xl">
+              <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="aspect-[2/5] overflow-hidden rounded-none shadow-2xl">
                 <img src="/productimges/one.jpeg" className="w-full h-full object-cover" alt="Wellness 1" />
               </motion.div>
-              <motion.div initial={{ opacity: 0, y: -50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="aspect-[2/5] overflow-hidden rounded-t-full rounded-b-2xl shadow-2xl mt-12 md:mt-16">
+              <motion.div initial={{ opacity: 0, y: -50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="aspect-[2/5] overflow-hidden rounded-none shadow-2xl mt-12 md:mt-16">
                 <img src="/productimges/three.jpeg" className="w-full h-full object-cover" alt="Wellness 2" />
               </motion.div>
-              <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="aspect-[2/5] overflow-hidden rounded-t-full rounded-b-2xl shadow-2xl">
+              <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="aspect-[2/5] overflow-hidden rounded-none shadow-2xl">
                 <img src="/productimges/two.jpeg" className="w-full h-full object-cover" alt="Wellness 3" />
               </motion.div>
             </div>
@@ -729,7 +652,7 @@ function OpeningHoursSection() {
               </div>
             </div>
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-              <motion.button whileHover={{ scale: 1.05, backgroundColor: "#2d2d2d" }} whileTap={{ scale: 0.95 }} className="bg-brand-green text-white px-12 py-5 text-[11px] font-bold tracking-[0.3em] uppercase rounded-full shadow-xl transition-all">
+              <motion.button whileHover={{ scale: 1.05, backgroundColor: "#2d2d2d" }} whileTap={{ scale: 0.95 }} className="bg-brand-green text-white px-12 py-5 text-[11px] font-bold tracking-[0.3em] uppercase rounded-none shadow-xl transition-all">
                 Explore Products
               </motion.button>
             </motion.div>
@@ -758,24 +681,19 @@ function AyurvedaSection() {
       </motion.div>
 
       <motion.div style={{ opacity }} className="relative z-20 max-w-5xl mx-auto px-6 text-center text-white">
-        <div className="space-y-8">
+        <div className="space-y-6">
           <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, ease: "easeOut" }}>
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="w-12 h-[1px] bg-brand-gold/40" />
-              <span className="text-[11px] font-bold tracking-[0.6em] text-brand-gold uppercase">Botanical Wisdom</span>
-              <div className="w-12 h-[1px] bg-brand-gold/40" />
-            </div>
-            <h2 className="text-4xl md:text-7xl font-serif leading-[1.05] tracking-tight text-white mb-8">
-              Wisdom of <br />
-              <span className="italic text-brand-gold">Botanical Heritage</span>
+            <h2 className="text-2xl md:text-3xl font-serif leading-[1.2] tracking-wide text-white">
+              Discover the Purity of Aloe <br className="hidden md:block" />
+              & Vitality of Ayurvedic Capsules
             </h2>
           </motion.div>
-          <motion.p initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }} className="text-white/90 font-sans text-sm md:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
-            Immerse yourself in centuries of herbal expertise. Our legacy of purity combines ancient Ayurvedic rituals with modern botanical science to restore your natural vital force.
+          <motion.p initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }} className="text-white/90 font-sans text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-medium">
+            Experience the ancient wisdom of holistic healing. Our botanical creations are infused with pure herbal extracts that balance your body’s natural rhythm, promoting vibrant health from within.
           </motion.p>
-          <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }} className="pt-10">
-            <motion.button whileHover={{ scale: 1.05, backgroundColor: "#2d2d2d" }} whileTap={{ scale: 0.95 }} className="bg-brand-green text-brand-gold border border-brand-gold/30 px-16 py-6 text-[11px] font-bold tracking-[0.4em] uppercase shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all rounded-full">
-              Explore Our Heritage
+          <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }} className="pt-6">
+            <motion.button whileHover={{ scale: 1.05, backgroundColor: "#5a6b4c" }} whileTap={{ scale: 0.95 }} className="bg-brand-gold text-white px-14 py-5 text-[11px] font-bold tracking-[0.4em] uppercase shadow-2xl transition-all rounded-none">
+              Contact Us
             </motion.button>
           </motion.div>
         </div>

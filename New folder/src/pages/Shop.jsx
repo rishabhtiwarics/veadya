@@ -64,9 +64,9 @@ export default function Shop() {
         <div className="flex flex-col md:flex-row justify-between items-center mb-12 py-6 border-y border-brand-green/10">
             <div className="flex gap-8 text-[10px] font-bold tracking-[0.2em] text-brand-green/40 uppercase">
                 <span className="text-brand-green cursor-pointer">All Products</span>
-                <span className="hover:text-brand-green cursor-pointer transition-colors">Juice</span>
+                <span className="hover:text-brand-green cursor-pointer transition-colors">Juices</span>
                 <span className="hover:text-brand-green cursor-pointer transition-colors">Capsules</span>
-                <span className="hover:text-brand-green cursor-pointer transition-colors">Drop</span>
+                <span className="hover:text-brand-green cursor-pointer transition-colors">Extracts</span>
             </div>
             <div className="mt-4 md:mt-0 text-[10px] font-bold tracking-[0.2em] text-brand-green/40 uppercase">
                 Showing {products.length} Results

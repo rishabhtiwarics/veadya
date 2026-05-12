@@ -10,7 +10,7 @@ export default function Footer() {
             {/* Branding */}
             <div className="space-y-8">
               <div className="flex items-center gap-3">
-                <div className="bg-white p-3 rounded-2xl border border-white/10">
+                <div className="bg-white p-3 rounded-none border border-white/10">
                   <img src="/logo/bgremovepng.png" className="h-20 w-auto object-contain" alt="Veadya Logo" />
                 </div>
               </div>
@@ -28,9 +28,9 @@ export default function Footer() {
             <div className="hidden md:block space-y-8">
               <h4 className="text-[10px] tracking-[0.3em] font-bold uppercase text-brand-gold/80">Collections</h4>
               <ul className="space-y-4 text-sm font-sans font-medium text-brand-cream/50">
-                <li className="hover:text-brand-gold cursor-pointer transition-colors">Capsules</li>
-                <li className="hover:text-brand-gold cursor-pointer transition-colors">Drops</li>
-                <li className="hover:text-brand-gold cursor-pointer transition-colors">Juice</li>
+                <li className="hover:text-brand-gold cursor-pointer transition-colors">Ayurvedic Capsules</li>
+                <li className="hover:text-brand-gold cursor-pointer transition-colors">Aloe Vera Juices</li>
+                <li className="hover:text-brand-gold cursor-pointer transition-colors">Botanical Extracts</li>
                 <li className="hover:text-brand-gold cursor-pointer transition-colors">Wellness Gift Sets</li>
               </ul>
             </div>

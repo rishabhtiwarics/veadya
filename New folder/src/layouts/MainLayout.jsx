@@ -82,28 +82,30 @@ export default function MainLayout() {
               </div>
 
               <div className="mt-auto pt-10 border-t border-brand-green/10">
-                <button 
-                  disabled={items.length === 0}
-                  onClick={() => {
-                    if (items.length > 0) {
-                      dispatch(setCartOpen(false));
-                      // Navigate to checkout
-                    }
-                  }}
-                  className={`w-full py-5 text-[10px] font-bold tracking-[0.3em] uppercase transition-all shadow-xl rounded-none ${
-                    items.length > 0 
-                      ? "bg-brand-green text-white hover:bg-brand-gold hover:text-brand-green" 
-                      : "bg-brand-green/5 text-brand-green/20 cursor-not-allowed"
-                  }`}
-                >
-                  {items.length > 0 ? "Proceed to Checkout" : "Checkout Unavailable"}
-                </button>
+                 <div className="flex justify-between items-center mb-8">
+                   <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-brand-green/50">Subtotal</span>
+                   <span className="font-sans font-bold text-brand-text text-xl">₹{subtotal}</span>
+                 </div>
+                 {items.length > 0 ? (
+                   <button 
+                    onClick={() => {
+                        dispatch(setCartOpen(false));
+                        // Navigate to checkout
+                    }}
+                    className="w-full bg-brand-green text-white py-5 text-[10px] font-bold tracking-[0.3em] uppercase hover:bg-brand-gold hover:text-brand-green transition-all shadow-xl rounded-none"
+                   >
+                      Proceed to Checkout
+                   </button>
+                 ) : (
+                   <button className="w-full bg-brand-green/10 text-brand-green/40 py-5 text-[10px] font-bold tracking-[0.3em] uppercase cursor-not-allowed rounded-none">
+                      Checkout Unavailable
+                   </button>
+                 )}
               </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
-
     </div>
   );
 }
