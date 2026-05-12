@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { products } from '../data/products';
@@ -8,6 +8,8 @@ import { motion } from 'motion/react';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Shop() {
+  const [activeFilter, setActiveFilter] = useState('all');
+
   useEffect(() => {
     const staggerContainers = document.querySelectorAll('.stagger-container');
     staggerContainers.forEach((container) => {
@@ -27,7 +29,9 @@ export default function Shop() {
         }
       );
     });
-  }, []);
+  }, [activeFilter]);
+
+  const filteredProducts = products.filter(p => activeFilter === 'all' || p.category === activeFilter);
 
   return (
     <div className="bg-brand-cream min-h-screen pt-12 pb-24 px-6">
@@ -60,21 +64,26 @@ export default function Shop() {
           </motion.p>
         </div>
 
-        {/* Filter/Sort Placeholder */}
+        {/* Filter Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-12 py-6 border-y border-brand-green/10">
-            <div className="flex gap-8 text-[10px] font-bold tracking-[0.2em] text-brand-green/40 uppercase">
-                <span className="text-brand-green cursor-pointer">All Products</span>
-                <span className="hover:text-brand-green cursor-pointer transition-colors">Juice</span>
-                <span className="hover:text-brand-green cursor-pointer transition-colors">Capsules</span>
-                <span className="hover:text-brand-green cursor-pointer transition-colors">Drop</span>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-[10px] font-bold tracking-[0.2em] uppercase">
+                {['all', 'juice', 'capsules', 'drop'].map((cat) => (
+                    <button
+                        key={cat}
+                        onClick={() => setActiveFilter(cat)}
+                        className={`transition-colors ${activeFilter === cat ? 'text-brand-green' : 'text-brand-green/40 hover:text-brand-green'}`}
+                    >
+                        {cat === 'all' ? 'All Products' : cat}
+                    </button>
+                ))}
             </div>
             <div className="mt-4 md:mt-0 text-[10px] font-bold tracking-[0.2em] text-brand-green/40 uppercase">
-                Showing {products.length} Results
+                Showing {filteredProducts.length} Results
             </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 stagger-container">
-          {products.map((product, i) => (
+          {filteredProducts.map((product, i) => (
             <ProductCard key={product.id} product={product} index={i} />
           ))}
         </div>

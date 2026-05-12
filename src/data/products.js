@@ -3,83 +3,73 @@ export const products = [
     id: 1,
     name: "Pure Aloe Detox",
     description: "COLD-PRESSED JUICE",
+    category: "juice",
     price: "₹250",
-    image: "/productimges/four.jpeg",
-    hoverImage: "/productimges/product5.png",
+    image: "/productimges/1.png",
+    hoverImage: "/productimges/1.png",
     badge: "BEST SELLER"
   },
   {
     id: 2,
     name: "Stress Relief Plus",
     description: "ASHWAGANDHA CAPSULES",
+    category: "capsules",
     price: "₹450",
-    image: "/productimges/one.jpeg",
-    hoverImage: "/productimges/product9.png",
+    image: "/productimges/5.png",
+    hoverImage: "/productimges/5.png",
     badge: "PREMIUM"
   },
   {
     id: 3,
     name: "Immunity Guard",
     description: "GILOY & TULSI CAPS",
+    category: "capsules",
     price: "₹550",
-    image: "/productimges/three.jpeg",
-    hoverImage: "/productimges/product9.png",
+    image: "/productimges/6.png",
+    hoverImage: "/productimges/6.png",
     badge: null
   },
   {
     id: 4,
     name: "Golden Turmeric",
     description: "VITALITY COMPLEX",
+    category: "juice",
     price: "₹380",
-    image: "/productimges/two.jpeg",
-    hoverImage: "/productimges/product8.png",
+    image: "/productimges/2.png",
+    hoverImage: "/productimges/2.png",
     badge: null
   },
   {
     id: 5,
     name: "Amla Vitality",
     description: "PURE EXTRACT",
+    category: "juice",
     price: "₹290",
-    image: "/productimges/product5.png",
-    hoverImage: "/productimges/product1.png",
+    image: "/productimges/3.png",
+    hoverImage: "/productimges/3.png",
     badge: "NEW"
   },
   {
     id: 6,
     name: "Neem Purify",
-    description: "SKIN HEALTH",
+    description: "HERBAL DROPS",
+    category: "drop",
     price: "₹320",
-    image: "/productimges/product9.png",
-    hoverImage: "/productimges/product8.png",
+    image: "/productimges/7.png",
+    hoverImage: "/productimges/7.png",
     badge: null
   },
   {
     id: 7,
     name: "Tulsi Relax",
-    description: "HERBAL INFUSION",
+    description: "HERBAL JUICE",
+    category: "juice",
     price: "₹200",
-    image: "/productimges/product1.png",
-    hoverImage: "/productimges/product9.png",
+    image: "/productimges/4.png",
+    hoverImage: "/productimges/4.png",
     badge: null
   },
-  {
-    id: 8,
-    name: "Shilajit Gold",
-    description: "ENERGY BOOSTER",
-    price: "₹850",
-    image: "/productimges/product5.png",
-    hoverImage: "/productimges/product5.png",
-    badge: "LUXURY"
-  },
-  {
-    id: 9,
-    name: "Triphala Cleanse",
-    description: "DIGESTIVE CARE",
-    price: "₹420",
-    image: "/productimges/product9.png",
-    hoverImage: "/productimges/product1.png",
-    badge: null
-  }
+
 ];
 
 export const heroSlides = [

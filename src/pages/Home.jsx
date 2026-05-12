@@ -12,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [activeFilter, setActiveFilter] = useState('all');
 
   useEffect(() => {
     // Scroll reveal animations with GSAP
@@ -198,18 +199,18 @@ export default function Home() {
           <div className="flex justify-center w-full">
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-6xl">
               {[
-                { title: 'CAPSULES', items: '12+ Items', image: '/productimges/product5.png', icon: Sparkles, to: '/shop?category=capsules' },
-                { title: 'DROP', items: '08+ Items', image: '/productimges/product5.png', icon: Droplet, to: '/shop?category=drop' },
-                { title: 'JUICE', items: '10+ Items', image: '/productimges/product5.png', icon: Leaf, to: '/shop?category=juice' },
+                { title: 'CAPSULES', items: '1 Items', image: '/productimges/product5.png', icon: Sparkles, to: '/shop?category=capsules' },
+                { title: 'DROP', items: '1 Item', image: '/productimges/product5.png', icon: Droplet, to: '/shop?category=drop' },
+                { title: 'JUICE', items: '4 Items', image: '/productimges/product5.png', icon: Leaf, to: '/shop?category=juice' },
               ].map((category) => (
                 <Link key={category.title} to={category.to} className="block group">
                   <div className="relative overflow-hidden border border-brand-gold/20 bg-brand-earth/5 p-3 shadow-sm hover:shadow-xl transition-all duration-700 rounded-t-full rounded-b-[80px]">
                     <div className="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden mb-8 sm:mb-12 rounded-t-full rounded-b-3xl border border-brand-gold/10">
                       <div className="relative w-full h-full overflow-hidden bg-brand-earth">
-                        <motion.img 
-                          src={category.image} 
-                          alt={category.title} 
-                          className="h-full w-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000" 
+                        <motion.img
+                          src={category.image}
+                          alt={category.title}
+                          className="h-full w-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000"
                         />
                       </div>
                     </div>
@@ -323,12 +324,31 @@ export default function Home() {
             <h2 className="text-2xl md:text-3xl font-serif text-brand-green leading-none tracking-wide">
               Our Best Sellers
             </h2>
+
+            {/* Category Filter Tabs */}
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-8">
+              {['all', 'capsules', 'drop', 'juice'].map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveFilter(cat)}
+                  className={`px-6 py-2 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase transition-all border ${activeFilter === cat
+                    ? 'bg-brand-green text-white border-brand-green shadow-lg'
+                    : 'bg-white text-brand-green border-brand-green/20 hover:border-brand-green'
+                    }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 stagger-container">
-            {products.slice(0, 8).map((product, i) => (
-              <ProductCard key={product.id} product={product} index={i} />
-            ))}
+            {products
+              .filter(p => activeFilter === 'all' || p.category === activeFilter)
+              .slice(0, 4)
+              .map((product, i) => (
+                <ProductCard key={product.id} product={product} index={i} />
+              ))}
           </div>
 
           <div className="mt-16 text-center">
@@ -359,10 +379,10 @@ export default function Home() {
             >
               <div className="flex flex-col gap-3 h-full">
                 <div className="h-[45%] overflow-hidden border border-brand-green/5 shadow-lg rounded-2xl relative group/img">
-                  <motion.img 
-                    src="/productimges/product3.png" 
-                    className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000" 
-                    alt="Ayurvedic Treatment" 
+                  <motion.img
+                    src="/productimges/product3.png"
+                    className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000"
+                    alt="Ayurvedic Treatment"
                   />
                   <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-all duration-500 z-20">
                     <Link to="/shop">
@@ -377,10 +397,10 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="h-[55%] overflow-hidden border border-brand-green/5 shadow-lg rounded-2xl relative group/img">
-                  <motion.img 
-                    src="/productimges/product5.png" 
-                    className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000" 
-                    alt="Botanical Oils" 
+                  <motion.img
+                    src="/productimges/product5.png"
+                    className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000"
+                    alt="Botanical Oils"
                   />
                   <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-all duration-500 z-20">
                     <Link to="/shop">
@@ -397,10 +417,10 @@ export default function Home() {
               </div>
               <div className="h-full overflow-hidden border border-brand-green/5 shadow-xl relative group group/img rounded-2xl">
                 <div className="absolute inset-0 bg-brand-green/10 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
-                <motion.img 
-                  src="/productimges/product7.png" 
-                  className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000" 
-                  alt="Wellness Ritual" 
+                <motion.img
+                  src="/productimges/product7.png"
+                  className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-1000"
+                  alt="Wellness Ritual"
                 />
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-all duration-500 z-20">
                   <Link to="/shop">
@@ -774,9 +794,13 @@ function AyurvedaSection() {
             Immerse yourself in centuries of herbal expertise. Our legacy of purity combines ancient Ayurvedic rituals with modern botanical science to restore your natural vital force.
           </motion.p>
           <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}>
-            <motion.button whileHover={{ scale: 1.05, backgroundColor: "#2d2d2d" }} whileTap={{ scale: 0.95 }} className="bg-brand-green text-brand-gold border border-brand-gold/30 px-16 py-6 text-[11px] font-bold tracking-[0.4em] uppercase shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all rounded-full">
+            <motion.button whileHover={{ scale: 1.05, backgroundColor: "#2d2d2d" }} whileTap={{ scale: 0.95 }}
+              className="bg-brand-green text-white px-12 py-5 text-[11px] font-bold tracking-[0.3em] uppercase rounded-full shadow-xl transition-all"
+              style={{ color: "#ffff" }}>
               Explore Our Heritage
             </motion.button>
+
+
           </motion.div>
         </div>
       </motion.div>

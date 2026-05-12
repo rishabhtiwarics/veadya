@@ -79,7 +79,7 @@ export default function ProductCard({ product, index }) {
               disabled={isInCart}
               className="w-full bg-brand-green text-white py-3 sm:py-4 rounded-full text-[9px] sm:text-[10px] font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-2 sm:gap-3 hover:bg-brand-text transition-all shadow-lg group/btn"
             >
-              {isInCart ? 'IN BAG' : 'SHOP NOW'}
+              {isInCart ? 'IN CART' : 'ADD TO CART'}
               <ArrowUpRight size={12} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
             </button>
           </div>
