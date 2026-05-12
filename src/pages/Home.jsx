@@ -676,10 +676,10 @@ function OpeningHoursSection() {
   const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
 
   return (
-    <section ref={containerRef} className="relative py-16 md:py-20 overflow-hidden bg-brand-cream/30">
+    <section ref={containerRef} className="relative py-16 md:py-24 overflow-hidden bg-brand-cream">
       <motion.div style={{ y }} className="absolute inset-0 z-0 h-[130%] w-full">
-
-        <img src="/discover/one.png" className="w-full h-full object-cover grayscale opacity-20" alt="background" />
+        <div className="absolute inset-0 bg-brand-cream/60 z-10" />
+        <img src="/discover/one.png" className="w-full h-full object-cover opacity-40" alt="background" />
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-20">
@@ -706,8 +706,8 @@ function OpeningHoursSection() {
                   <span className="text-[10px] font-bold tracking-[0.5em] text-brand-gold uppercase">Sanctuary & Shop</span>
                 </div>
               </motion.div>
-              <p className="text-brand-green/60 font-sans leading-relaxed text-sm md:text-base font-medium max-w-md">
-                Discover our specialized collection of potent <span className="text-brand-green">Ayurveda capsules</span> and revitalizing, high-purity <span className="text-brand-green">Aloe Vera juice</span>. We provide natural remedies that nurture your body from the inside out.
+              <p className="text-brand-green font-sans leading-relaxed text-sm md:text-base font-semibold max-w-md">
+                Discover our specialized collection of potent <span className="text-brand-gold font-bold">Ayurveda capsules</span> and revitalizing, high-purity <span className="text-brand-gold font-bold">Aloe Vera juice</span>. We provide natural remedies that nurture your body from the inside out.
               </p>
             </div>
 
@@ -715,11 +715,11 @@ function OpeningHoursSection() {
               <div className="grid grid-cols-2 gap-8 text-left">
                 <div className="space-y-3">
                   <h4 className="text-[10px] font-bold tracking-[0.2em] text-brand-green uppercase">The Sanctuary</h4>
-                  <p className="text-xs text-brand-green/50 font-medium leading-relaxed">124 Botanical Gardens,<br />Veadya Valley, HP 173212</p>
+                  <p className="text-xs text-brand-green/80 font-semibold leading-relaxed">124 Botanical Gardens,<br />Veadya Valley, HP 173212</p>
                 </div>
                 <div className="space-y-3">
                   <h4 className="text-[10px] font-bold tracking-[0.2em] text-brand-green uppercase">Ritual Hours</h4>
-                  <p className="text-xs text-brand-green/50 font-medium leading-relaxed">Mon - Fri: 09:00 - 20:00<br />Sat - Sun: 10:00 - 18:00</p>
+                  <p className="text-xs text-brand-green/80 font-semibold leading-relaxed">Mon - Fri: 09:00 - 20:00<br />Sat - Sun: 10:00 - 18:00</p>
                 </div>
               </div>
 
