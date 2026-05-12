@@ -751,29 +751,29 @@ function AyurvedaSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
 
   return (
-    <section ref={containerRef} className="relative py-16 md:py-24 w-full overflow-hidden flex items-center justify-center">
+    <section ref={containerRef} className="relative py-24 w-full overflow-hidden flex items-center justify-center">
       <motion.div style={{ y }} className="absolute inset-0 z-0 h-[130%] w-full">
-        <div className="absolute inset-0 bg-brand-green/35 z-10" />
+        <div className="absolute inset-0 bg-black/50 z-10" />
         <img src="/discover/one.png" className="w-full h-full object-cover" alt="Ayurveda Background" />
       </motion.div>
 
       <motion.div style={{ opacity }} className="relative z-20 max-w-5xl mx-auto px-6 text-center text-white">
-        <div className="space-y-8">
+        <div className="space-y-6 drop-shadow-2xl">
           <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, ease: "easeOut" }}>
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="w-12 h-[1px] bg-brand-gold/40" />
-              <span className="text-[11px] font-bold tracking-[0.6em] text-brand-gold uppercase">Botanical Wisdom</span>
-              <div className="w-12 h-[1px] bg-brand-gold/40" />
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="w-12 h-[1px] bg-brand-gold/60" />
+              <span className="text-[10px] font-bold tracking-[0.5em] text-brand-gold uppercase">Botanical Wisdom</span>
+              <div className="w-12 h-[1px] bg-brand-gold/60" />
             </div>
-            <h2 className="text-4xl md:text-7xl font-serif leading-[1.05] tracking-tight text-white mb-8">
+            <h2 className="text-2xl md:text-3xl font-serif leading-tight tracking-wide text-white">
               Wisdom of <br />
               <span className="italic text-brand-gold">Botanical Heritage</span>
             </h2>
           </motion.div>
-          <motion.p initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }} className="text-white/90 font-sans text-sm md:text-lg max-w-2xl mx-auto leading-relaxed font-medium">
+          <motion.p initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }} className="text-white font-sans text-sm md:text-base max-w-2xl mx-auto leading-relaxed font-semibold">
             Immerse yourself in centuries of herbal expertise. Our legacy of purity combines ancient Ayurvedic rituals with modern botanical science to restore your natural vital force.
           </motion.p>
-          <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }} className="pt-10">
+          <motion.div initial={{ y: 30, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}>
             <motion.button whileHover={{ scale: 1.05, backgroundColor: "#2d2d2d" }} whileTap={{ scale: 0.95 }} className="bg-brand-green text-brand-gold border border-brand-gold/30 px-16 py-6 text-[11px] font-bold tracking-[0.4em] uppercase shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all rounded-full">
               Explore Our Heritage
             </motion.button>
