@@ -181,8 +181,46 @@ export default function Home() {
       </section>
 
       {/* Category Highlights */}
-      <section className="py-24 px-6 bg-white scroll-reveal shadow-[0_30px_90px_-60px_rgba(35,65,35,0.18)]">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-24 px-6 bg-white scroll-reveal shadow-[0_30px_90px_-60px_rgba(35,65,35,0.18)] relative overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute -top-10 -right-10 w-64 md:w-96 h-64 md:h-96 opacity-30 pointer-events-none z-0">
+          <motion.img
+            src="/discover/1.png"
+            alt="Decorative Leaf"
+            animate={{
+              y: [0, 15, 0],
+              rotate: [0, 8, 0],
+              scale: [1, 1.05, 1]
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="w-full h-full object-contain"
+          />
+        </div>
+
+        <div className="absolute -bottom-10 -left-10 w-64 md:w-96 h-64 md:h-96 opacity-30 pointer-events-none z-0 rotate-180">
+          <motion.img
+            src="/discover/1.png"
+            alt="Decorative Leaf"
+            animate={{
+              y: [0, -15, 0],
+              rotate: [0, 8, 0],
+              scale: [1, 1.05, 1]
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="w-full h-full object-contain"
+          />
+        </div>
+
+
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-12 space-y-4">
             <div className="flex items-center justify-center gap-3 mb-2">
               <div className="w-8 h-[1px] bg-brand-gold/40" />
@@ -197,13 +235,13 @@ export default function Home() {
           </div>
 
           <div className="flex justify-center w-full">
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-6xl">
+            <div className="flex sm:grid overflow-x-auto sm:overflow-visible pb-12 sm:pb-0 gap-6 sm:grid-cols-2 lg:grid-cols-3 w-full max-w-6xl snap-x snap-mandatory scrollbar-hide px-4 sm:px-0">
               {[
                 { title: 'CAPSULES', items: '1 Items', image: '/productimges/product5.png', icon: Sparkles, to: '/shop?category=capsules' },
                 { title: 'DROP', items: '1 Item', image: '/productimges/product5.png', icon: Droplet, to: '/shop?category=drop' },
                 { title: 'JUICE', items: '4 Items', image: '/productimges/product5.png', icon: Leaf, to: '/shop?category=juice' },
               ].map((category) => (
-                <Link key={category.title} to={category.to} className="block group">
+                <Link key={category.title} to={category.to} className="block group flex-shrink-0 w-[85%] sm:w-auto snap-center">
                   <div className="relative overflow-hidden border border-brand-gold/20 bg-brand-earth/5 p-3 shadow-sm hover:shadow-xl transition-all duration-700 rounded-t-full rounded-b-[80px]">
                     <div className="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden mb-8 sm:mb-12 rounded-t-full rounded-b-3xl border border-brand-gold/10">
                       <div className="relative w-full h-full overflow-hidden bg-brand-earth">

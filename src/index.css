@@ -35,3 +35,11 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-brand-green/40;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
